@@ -72,8 +72,19 @@
   .stamp .cap{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:7px}
   .stamp .days{font-size:11px;color:var(--ink-2);margin-top:9px;letter-spacing:.03em}
 
+
+  .online{font-weight:700;letter-spacing:.02em}
+
+  /* ---------- venue strip ---------- */
+  .venue{
+    display:flex;align-items:center;gap:9px;margin-top:14px;
+    font-size:11px;color:var(--muted);letter-spacing:.015em;line-height:1.5;
+  }
+  .venue svg{flex:0 0 auto;color:var(--accent);opacity:.75}
+  .venue b{color:var(--ink-2);font-weight:600;font-size:11.5px;white-space:nowrap}
+
   /* ---------- ribbon ---------- */
-  .ribbon-wrap{margin-top:30px}
+  .ribbon-wrap{margin-top:22px}
   .sec-label{
     display:flex;justify-content:space-between;align-items:baseline;
     font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);
@@ -258,6 +269,13 @@
     </div>
   </header>
 
+  <div class="venue">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-6.4 7-11.5a7 7 0 1 0-14 0c0 5.1 7 11.5 7 11.5z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <b>Wilmton Art Hotel</b>
+    <span>(Building C, China Railway Ringwood City, No. 89 Phoenix Avenue, Nansha District, Nansha, 511455 Guangzhou, China)</span>
+  </div>
+
+
   <!-- proportional day ribbon -->
   <section class="ribbon-wrap">
     <div class="sec-label"><span>Day rhythm — bars drawn to scale</span><em>11-hour continuous programme</em></div>
@@ -266,12 +284,12 @@
       <i class="s-talk" style="flex:10"       title="09:05–09:15  Dr. Jiawei Chen — Project Overview"></i>
       <i class="s-logi" style="flex:5"        title="09:15–09:20  Group Photo"></i>
       <i class="s-lead" style="flex:20"       title="09:20–09:40  Prof. Faming Wang"></i>
-      <i class="s-lead" style="flex:20"       title="09:40–10:00  Prof. Derrick YF Lai"></i>
+      <i class="s-lead" style="flex:20"       title="09:40–10:00  Prof. Derrick YF Lai (online)"></i>
       <i class="s-talk" style="flex:15"       title="10:00–10:15  Prof. Junde Dong"></i>
       <i class="s-talk" style="flex:15"       title="10:15–10:30  Prof. Juan Ling"></i>
       <i class="s-talk" style="flex:15"       title="10:30–10:45  Dr. Weiguo Zhou"></i>
       <i class="s-logi" style="flex:25"       title="10:45–11:10  Break"></i>
-      <i class="s-talk" style="flex:15"       title="11:10–11:25  Prof. JD Gaitan Espitia"></i>
+      <i class="s-talk" style="flex:15"       title="11:10–11:25  Prof. JD Gaitan Espitia (online)"></i>
       <i class="s-talk" style="flex:15"       title="11:25–11:40  Prof. Jinping Cheng"></i>
       <i class="s-talk" style="flex:15"       title="11:40–11:55  Prof. Hongmei JING"></i>
       <i class="s-logi" style="flex:155"      title="11:55–14:30  Lunch Break"></i>
@@ -347,7 +365,7 @@
         <div class="row lead">
           <div class="time"><b>09:40</b> – 10:00</div>
           <div class="rail"><span class="dot"></span></div>
-          <div class="body"><div class="who"><span class="name-t">Prof. Derrick YF Lai</span><span class="tag">Co-PI (Task 4)</span></div><div class="sub">Progress report</div></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Derrick YF Lai</span><span class="tag">Co-PI (Task 4)</span></div><div class="sub">Progress report <span class="online">(online)</span></div></div>
           <div class="dur">20 min</div>
         </div>
         <div class="row talk">
@@ -377,7 +395,7 @@
         <div class="row talk">
           <div class="time"><b>11:10</b> – 11:25</div>
           <div class="rail"><span class="dot"></span></div>
-          <div class="body"><div class="who"><span class="name-t">Prof. JD Gaitan Espitia</span><span class="tag">Co-I</span></div><div class="sub">Progress report</div></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. JD Gaitan Espitia</span><span class="tag">Co-I</span></div><div class="sub">Progress report <span class="online">(online)</span></div></div>
           <div class="dur">15 min</div>
         </div>
         <div class="row talk">
@@ -404,7 +422,7 @@
     <!-- AFTERNOON -->
     <section class="panel">
       <div class="panel-head">
-        <div class="name"><small>Session 02</small>Afternoon &amp; Evening</div>
+        <div class="name"><small>Session 02</small>Afternoon</div>
         <div class="range">14:30 — 20:00</div>
       </div>
       <div class="rows">
@@ -492,8 +510,8 @@
 
   <section class="fmt">
     <div class="fmt-l">Presentation format</div>
-    <div class="fmt-i"><i style="background:var(--lead-dot)"></i><b>Co-PI</b> — 15 min report + 5 min Q&amp;A <u>20 min slot</u></div>
-    <div class="fmt-i"><i style="background:var(--talk-dot)"></i><b>Co-I</b> — 10 min report + 5 min Q&amp;A <u>15 min slot</u></div>
+    <div class="fmt-i"><i style="background:var(--lead-dot)"></i><b>Co-PI</b> — 15-min report + 5-min Q&amp;A <u>20-min slot</u></div>
+    <div class="fmt-i"><i style="background:var(--talk-dot)"></i><b>Co-I</b> — 10-min report + 5-min Q&amp;A <u>15-min slot</u></div>
   </section>
 
   <footer>
@@ -503,7 +521,6 @@
       <span><i style="background:var(--disc-dot)"></i>Discussion</span>
       <span><i style="background:#DCDAD0"></i>Break · meal · photo</span>
     </div>
-    <div class="foot-note">All times as scheduled · Speaker order follows the draft rundown</div>
   </footer>
 </div>
 </body>
