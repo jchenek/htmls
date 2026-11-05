@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jiawei CHEN (Jason) — Marine Environmental Scientist</title>
+<meta name="description" content="Personal website of Jiawei CHEN (Jason), Postdoctoral Fellow at HKUST, Department of Ocean Science." />
+<style>
+  :root{
+    --bg:#f6f8fa;
+    --card:#ffffff;
+    --ink:#1b2a38;
+    --muted:#5b6b7b;
+    --accent:#0f766e;
+    --accent-strong:#115e59;
+    --accent-soft:#e0f2f1;
+    --accent-line:#b2dfdb;
+    --border:#e3e8ee;
+    --link:#0f766e;
+    --shadow:0 1px 2px rgba(16,42,67,.05),0 8px 24px rgba(16,42,67,.06);
+    --serif:"Source Serif 4","Georgia","Times New Roman",serif;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .container{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* ===== Top nav ===== */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .nav-brand{font-weight:700;font-size:15px;letter-spacing:.2px;color:var(--ink)}
+  .nav-brand:hover{color:var(--accent-strong);text-decoration:none}
+  .nav-brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{
+    padding:8px 11px;font-size:13.5px;color:var(--muted);border-radius:8px;white-space:nowrap;
+  }
+  .nav-links a:hover{color:var(--accent-strong);background:var(--accent-soft);text-decoration:none}
+
+  /* ===== Hero ===== */
+  header.hero{
+    background:
+      radial-gradient(1200px 500px at 20% -10%,rgba(15,118,110,.14),transparent 60%),
+      radial-gradient(900px 420px at 90% 0%,rgba(45,137,173,.10),transparent 55%),
+      linear-gradient(180deg,#ffffff,#f6f8fa);
+    border-bottom:1px solid var(--border);
+    padding:64px 0 48px;
+  }
+  .hero-name{font-family:var(--serif);font-weight:600;font-size:44px;line-height:1.1;color:var(--ink);letter-spacing:-.5px}
+  .hero-title{font-size:18px;color:var(--accent-strong);font-weight:500;margin-top:10px}
+  .hero-affil{font-size:15px;color:var(--muted);margin-top:6px}
+  .contact-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:7px 14px;border-radius:999px;font-size:13.5px;
+    background:var(--card);border:1px solid var(--border);color:var(--ink);
+    box-shadow:0 1px 2px rgba(16,42,67,.04);transition:.15s;
+  }
+  .chip svg{width:15px;height:15px;flex:none}
+  .chip:hover{border-color:var(--accent-line);color:var(--accent-strong);text-decoration:none;transform:translateY(-1px)}
+
+  /* ===== Sections ===== */
+  main{padding:40px 0 72px}
+  section{margin-bottom:40px}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:30px 32px;box-shadow:var(--shadow);
+  }
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+  .sec-head h2{
+    font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.2px;color:var(--ink);
+  }
+  .sec-head::before{
+    content:"";width:18px;height:3px;background:var(--accent);border-radius:2px;align-self:center;
+  }
+  h3.sub{font-size:15px;color:var(--accent-strong);margin:22px 0 10px;font-weight:600}
+  p{margin-bottom:12px}
+  p:last-child{margin-bottom:0}
+
+  /* Experience / education */
+  .entry{display:flex;gap:20px;padding:14px 0;border-top:1px solid var(--border)}
+  .entry:first-of-type{border-top:none;padding-top:0}
+  .entry .when{flex:0 0 128px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+  .entry .what h4{font-size:15.5px;font-weight:600;color:var(--ink)}
+  .entry .what .org{font-size:14.5px;color:var(--accent-strong)}
+  .entry .what .sub{font-size:14px;color:var(--muted);margin-top:2px}
+  .entry .what .sub strong{color:var(--ink);font-weight:600}
+
+  /* Lists */
+  ul.plain{list-style:none}
+  ul.plain li{padding:7px 0 7px 24px;position:relative}
+  ul.plain li::before{content:"";position:absolute;left:6px;top:16px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+  /* Projects */
+  .project{padding:14px 0;border-top:1px solid var(--border)}
+  .project:first-of-type{border-top:none;padding-top:0}
+  .project h4{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+  .project .meta{font-size:13.5px;color:var(--accent-strong);font-weight:500}
+  .project .meta span{color:var(--muted);font-weight:400}
+
+  /* Publications */
+  ol.pubs{list-style:none;counter-reset:pub}
+  ol.pubs li{
+    position:relative;padding:11px 0 11px 34px;border-top:1px solid var(--border);
+    font-size:14.5px;
+  }
+  ol.pubs li:first-child{border-top:none}
+  ol.pubs li::before{
+    counter-increment:pub;content:counter(pub);
+    position:absolute;left:0;top:15px;width:24px;height:24px;line-height:24px;
+    text-align:center;font-size:12px;font-weight:600;color:var(--accent-strong);
+    background:var(--accent-soft);border-radius:6px;
+  }
+  .pub .title{font-weight:600;color:var(--ink)}
+  a.pub-title{color:var(--ink);font-weight:600}
+  a.pub-title:hover{color:var(--accent-strong)}
+  .pub em{font-style:italic;color:#33465a}
+  .pub .authors strong{color:var(--accent-strong);font-weight:700}
+  .pub .doi{
+    display:inline-block;font-size:12.5px;color:var(--accent);font-weight:500;
+    margin-left:6px;background:var(--accent-soft);padding:1px 8px;border-radius:999px;
+  }
+  .pub .doi:hover{text-decoration:none;background:var(--accent);color:#fff}
+  .pub .role{display:inline-block;font-size:12.5px;color:#8a5a1e;background:#fdf3e0;padding:1px 8px;border-radius:999px;margin-left:6px;font-weight:500}
+  .pub .metric{font-size:12.5px;color:var(--muted);margin-left:6px;white-space:nowrap}
+  .year-tag{
+    display:inline-block;font-family:var(--serif);font-size:17px;font-weight:600;color:var(--accent-strong);
+    margin:26px 0 6px;padding-bottom:4px;border-bottom:2px solid var(--accent-line);
+  }
+
+  footer{border-top:1px solid var(--border);background:#fff;padding:32px 0;color:var(--muted);font-size:13.5px}
+  footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media (max-width:640px){
+    .hero-name{font-size:34px}
+    .card{padding:24px 20px}
+    .entry{flex-direction:column;gap:4px}
+    .entry .when{flex:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="nav-brand" href="#about"><span>Jiawei</span> CHEN (Jason)</a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#awards">Awards</a>
+      <a href="#publications">Publications</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="about">
+  <div class="container">
+    <h1 class="hero-name">Jiawei CHEN (Jason)</h1>
+    <div class="hero-title">Postdoctoral Fellow</div>
+    <div class="hero-affil">Department of Ocean Science, The Hong Kong University of Science and Technology</div>
+    <div class="contact-row">
+      <a class="chip" href="https://www.researchgate.net/profile/Jiawei-Chen-41" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.7 4.6c1.6-1.6 4.1-1.6 5.7 0l2.1 2.1a.7.7 0 0 1 0 1L9.8 12.5a.7.7 0 0 1-1 0L6.7 10.3a4 4 0 0 1 0-5.7zM17.3 19.4c-1.6 1.6-4.1 1.6-5.7 0l-2.1-2.1a.7.7 0 0 1 0-1l4.7-4.8a.7.7 0 0 1 1 0l2.1 2.1a4 4 0 0 1 0 5.8zM8.2 12.3l3.5 3.5 3.5-3.5-3.5-3.5-3.5 3.5z"/></svg>
+        ResearchGate
+      </a>
+      <a class="chip" href="https://github.com/jchenek" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.4-5.25 5.69.41.35.77 1.05.77 2.12v3.14c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a class="chip" href="https://orcid.org/0000-0002-4874-3474" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8.5 7.5a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6zM7 10.5h3V17H7v-6.5zm4.5 0H14v.9c.4-.7 1.1-1.1 2-1.1 1.9 0 3 1.3 3 3.4V17h-3v-2.9c0-.9-.4-1.5-1.2-1.5-.8 0-1.3.6-1.3 1.5V17h-3v-6.5z"/></svg>
+        ORCID
+      </a>
+      <a class="chip" href="mailto:jchenek@connect.ust.hk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        jchenek@connect.ust.hk
+      </a>
+      <a class="chip" href="mailto:chenjw@ust.hk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        chenjw@ust.hk
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- Experience -->
+    <section id="experience" class="card">
+      <div class="sec-head"><h2>Working Experience</h2></div>
+      <div class="entry">
+        <div class="when">2024 – present</div>
+        <div class="what">
+          <h4>Postdoctoral Fellow</h4>
+          <div class="org">The Hong Kong University of Science and Technology</div>
+          <div class="sub">Supervisor: <strong>Prof. Pei-Yuan QIAN</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="card">
+      <div class="sec-head"><h2>Education</h2></div>
+      <div class="entry">
+        <div class="when">2019 – 2024</div>
+        <div class="what">
+          <h4>PhD in Marine Environmental Science</h4>
+          <div class="org">The Hong Kong University of Science and Technology</div>
+          <div class="sub">Supervisor: <strong>Prof. Hongbin LIU</strong></div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2015 – 2019</div>
+        <div class="what">
+          <h4>MPhil in Marine Biology</h4>
+          <div class="org">Institute of Deep-Sea Science and Engineering, University of Chinese Academy of Sciences</div>
+          <div class="sub">Supervisor: <strong>Prof. Haibin ZHANG</strong></div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="when">2011 – 2015</div>
+        <div class="what">
+          <h4>BSc in Marine Biological Resources and Environment</h4>
+          <div class="org">Ocean University of China</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research" class="card">
+      <div class="sec-head"><h2>Research Interests</h2></div>
+      <p>I am passionate about exploring biological, ecological, and evolutionary questions in diverse marine ecosystems. My research integrates multi-omics techniques with physiological and elemental measurements, aiming to connect cellular mechanisms with global biogeochemical processes. My current research interests include:</p>
+      <ul class="plain">
+        <li>Seagrass–microbe interactions</li>
+        <li>Cycling and fluxes of the climate-cooling gas in seagrass meadows</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="card">
+      <div class="sec-head"><h2>Projects &amp; Grants</h2></div>
+      <div class="project">
+        <h4>Coastal Blue Carbon Ecosystems in Hong Kong and the Greater Bay Area: Carbon Sequestration Capacity, Biogeochemical and Microbial Processes, and Control Mechanisms</h4>
+        <div class="meta">RGC — Strategic Topics Grant <span>· 2026 – · Participating</span></div>
+      </div>
+      <div class="project">
+        <h4>Deciphering the Fluxes and Cycling of Climate-cooling Gas Dimethylsulfide in Hong Kong Seagrass Meadows Through Field Experiments and Multi-omics Approaches</h4>
+        <div class="meta">Marine Ecology Enhancement Fund <span>· 2026 – · Co-Investigator</span></div>
+      </div>
+      <div class="project">
+        <h4>Shifts in Diatom and Dinoflagellate Communications in the Coastal Waters of the Pearl Estuary and Their Impact on Bacterial Community Diversity and Ecological Functions</h4>
+        <div class="meta">NSFC — General Project <span>· 2024 – · Co-Investigator</span></div>
+      </div>
+      <div class="project">
+        <h4>Identifying the Seagrass Conservation and Restoration Priorities in Hong Kong in Relation to Anthropogenic Pressure</h4>
+        <div class="meta">Marine Conservation Enhancement Fund <span>· 2024 – 2026 · Co-Investigator</span></div>
+      </div>
+      <div class="project">
+        <h4>Environment and Conservation Fund Using DNA Metabarcoding to Reveal the Biodiversity and Spatiotemporal Dynamics of Harmful Algal Bloom Species in Hong Kong Coastal Waters</h4>
+        <div class="meta">Environment and Conservation Fund <span>· 2024 – 2026 · Co-Investigator</span></div>
+      </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" class="card">
+      <div class="sec-head"><h2>Expertise</h2></div>
+      <ul class="plain">
+        <li>Multi-omics techniques: amplicon, metagenomics, metatranscriptomics, RNA-seq, epigenomics, meta-Hi-C</li>
+        <li>Proficient in R, Perl, and Shell scripting for large-scale data analysis</li>
+        <li>High-performance computing server construction, configuration, and maintenance</li>
+        <li>Experimental skills: nucleotide extraction/purification, PCR/qPCR, fluorescence in situ hybridization, cell isolation/culture, flow cytometry, cell sorting, gas chromatography, mass spectrometry</li>
+        <li>Fieldwork: coastal and open-ocean cruises, wetland and deep-sea sediment coring, scientific scuba diving</li>
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards" class="card">
+      <div class="sec-head"><h2>Awards &amp; Honors</h2></div>
+      <ul class="plain">
+        <li>HKUST RedBird Academic Excellence Award (2022–2023)</li>
+        <li>HKUST RedBird Academic Excellence Award (2021–2022)</li>
+        <li>National Scholarship of China (2017)</li>
+      </ul>
+    </section>
+
+    <!-- Selected publications -->
+    <section id="publications" class="card">
+      <div class="sec-head"><h2>Selected Publications</h2></div>
+      <p style="font-size:13.5px;color:var(--muted)">First and corresponding author publications (over the past five years; in reverse chronological order).</p>
+      <ol class="pubs" style="counter-reset:pub">
+        <li class="pub">
+          <span class="authors">Zhang, X., …, <strong>Chen, J.</strong>, &amp; Liu, H.</span> (2026).
+          <a class="pub-title" href="https://doi.org/10.1002/lol2.70175" target="_blank" rel="noopener">Does nutrients scarcity select for <em>Synechococcus</em> clade III in the Mediterranean Sea</a>.
+          <em>Limnology &amp; Oceanography Letters</em>.
+          <a class="doi" href="https://doi.org/10.1002/lol2.70175" target="_blank" rel="noopener">doi:10.1002/lol2.70175</a>
+          <span class="role">co-corresponding author</span><span class="metric">5-Year IF: 7.4 · JCR Q1 · CAS Q1</span>
+        </li>
+        <li class="pub">
+          <span class="authors">Deng, L., <strong>Chen, J.</strong>, …, &amp; Liu, H.</span> (2025).
+          <a class="pub-title" href="https://doi.org/10.1038/s43247-025-02850-9" target="_blank" rel="noopener">Global marine metagenomics reveals the functional diversity and ecological adaptations of diazotrophs across marine ecosystems</a>.
+          <em>Communications Earth &amp; Environment</em>.
+          <a class="doi" href="https://doi.org/10.1038/s43247-025-02850-9" target="_blank" rel="noopener">doi:10.1038/s43247-025-02850-9</a>
+          <span class="role">co-first author</span><span class="metric">5-Year IF: 10.4 · JCR Q1 · CAS Q1</span>
+        </li>
+        <li class="pub">
+          <span class="authors">Li, Q., <strong>Chen, J.</strong>, …, &amp; Liu, H.</span> (2025).
+          <a class="pub-title" href="https://doi.org/10.1186/s12866-025-04366-w" target="_blank" rel="noopener">Detoxification of domoic acid from pseudo-nitzschia by gut microbiota in <em>Acartia erythraea</em></a>.
+          <em>BMC Microbiology</em>.
+          <a class="doi" href="https://doi.org/10.1186/s12866-025-04366-w" target="_blank" rel="noopener">doi:10.1186/s12866-025-04366-w</a>
+          <span class="role">co-corresponding author</span><span class="metric">5-Year IF: 5.6 · JCR Q1 · CAS Q2</span>
+        </li>
+        <li class="pub">
+          <span class="authors"><strong>Chen, J.</strong>, Deng, L., Wang, X., Zhong, C., Xia, X., &amp; Liu, H.</span> (2024).
+          <a class="pub-title" href="https://doi.org/10.1128/msystems.00176-24" target="_blank" rel="noopener">Chemosynthetic alphaproteobacterial diazotrophs reside in deep-sea cold-seep bottom waters</a>.
+          <em>mSystems</em>.
+          <a class="doi" href="https://doi.org/10.1128/msystems.00176-24" target="_blank" rel="noopener">doi:10.1128/msystems.00176-24</a>
+          <span class="role">first author</span><span class="metric">5-Year IF: 6.4 · JCR Q1 · CAS Q2</span>
+        </li>
+        <li class="pub">
+          <span class="authors"><strong>Chen, J.</strong>, Deng, L., Pang, M., Li, Y., Xu, Z., Zhang, X., &amp; Liu, H.</span> (2024).
+          <a class="pub-title" href="https://doi.org/10.1093/ismeco/ycae087" target="_blank" rel="noopener">Transcriptomic insights into the shift of trophic strategies in mixotrophic dinoflagellate <em>Lepidodinium</em> in the warming ocean</a>.
+          <em>ISME Communications</em>.
+          <a class="doi" href="https://doi.org/10.1093/ismeco/ycae087" target="_blank" rel="noopener">doi:10.1093/ismeco/ycae087</a>
+          <span class="role">first author</span><span class="metric">5-Year IF: 7.3 · JCR Q1 · CAS Q1</span>
+        </li>
+        <li class="pub">
+          <span class="authors"><strong>Chen, J.</strong>, Li, Y., Zhong, C., Xu, Z., Lu, G., Jing, H., &amp; Liu, H.</span> (2023).
+          <a class="pub-title" href="https://doi.org/10.1128/msystems.01179-22" target="_blank" rel="noopener">Genomic Insights into Niche Partitioning across Sediment Depth among Anaerobic Methane-Oxidizing Archaea in Global Methane Seeps</a>.
+          <em>mSystems</em>.
+          <a class="doi" href="https://doi.org/10.1128/msystems.01179-22" target="_blank" rel="noopener">doi:10.1128/msystems.01179-22</a>
+          <span class="role">first author</span><span class="metric">5-Year IF: 6.4 · JCR Q1 · CAS Q2</span>
+        </li>
+        <li class="pub">
+          <span class="authors"><strong>Chen, J.</strong>, Li, Y., Jing, H., Zhang, X., Xu, Z., Xu, J., &amp; Liu, H.</span> (2022).
+          <a class="pub-title" href="https://doi.org/10.1111/nph.17903" target="_blank" rel="noopener">Genomic and transcriptomic evidence for the diverse adaptations of <em>Synechococcus</em> subclusters 5.2 and 5.3 to mesoscale eddies</a>.
+          <em>New Phytologist</em>.
+          <a class="doi" href="https://doi.org/10.1111/nph.17903" target="_blank" rel="noopener">doi:10.1111/nph.17903</a>
+          <span class="role">co-first author</span><span class="metric">5-Year IF: 10.1 · JCR Q1 · CAS Q1</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Full publication list -->
+    <section id="publications-full" class="card">
+      <div class="sec-head"><h2>Full Publication List</h2></div>
+
+      <div class="year-tag">2026</div>
+      <ol class="pubs" style="counter-reset:pub">
+        <li class="pub"><span class="authors">Zhang, X., Cheung, S., Chan, H., Lee, S., Santi, I., Pitta, P., <strong>Chen, J.</strong>, &amp; Liu, H.</span> (2026). <a class="pub-title" href="https://doi.org/10.1002/lol2.70175" target="_blank" rel="noopener">Does nutrients scarcity select for <em>Synechococcus</em> clade III in the Mediterranean Sea?</a> <em>Limnology and Oceanography Letters</em>, lol270175. <a class="doi" href="https://doi.org/10.1002/lol2.70175" target="_blank" rel="noopener">doi:10.1002/lol2.70175</a> <span class="role">co-corresponding author</span><span class="metric">5-Year IF: 7.4 · JCR Q1 · CAS Q1</span></li>
+        <li class="pub"><span class="authors">Deng, L., Ju, Z., <strong>Chen, J.</strong>, Lin, Y., Zhou, W., Lee, S. S., Yung, C. C. M., &amp; Liu, H.</span> (2026). <a class="pub-title" href="https://doi.org/10.1128/aem.00993-26" target="_blank" rel="noopener">Sulfur-cycling diazotrophs dominate nitrogen fixation in seagrass sediments</a>. <em>Applied and Environmental Microbiology</em>, 92(8), e00993-26. <a class="doi" href="https://doi.org/10.1128/aem.00993-26" target="_blank" rel="noopener">doi:10.1128/aem.00993-26</a></li>
+        <li class="pub"><span class="authors">Su, R., Chan, P. T., Zhang, X., <strong>Chen, J.</strong>, Lee, S., Yang, X., Chan, H. Y., Lin, Y., Li, J., Yan, Q., Liu, H., &amp; He, Z.</span> (2026). <a class="pub-title" href="https://doi.org/10.1093/ismeco/ycag220" target="_blank" rel="noopener">Seagrass-derived carbon suppresses nitrification and N<sub>2</sub>O emissions by comammox and canonical nitrifier communities</a>. <em>ISME Communications</em>, ycag220. <a class="doi" href="https://doi.org/10.1093/ismeco/ycag220" target="_blank" rel="noopener">doi:10.1093/ismeco/ycag220</a></li>
+        <li class="pub"><span class="authors">Wang, X., <strong>Chen, J.</strong>, Tang, Y., &amp; Liu, H.</span> (2026). <a class="pub-title" href="https://doi.org/10.1007/s00248-026-02808-0" target="_blank" rel="noopener">Insights into the mechanism underlying the symbiosis between seagrass and a lulworthiaceae fungus</a>. <em>Microbial Ecology</em>. <a class="doi" href="https://doi.org/10.1007/s00248-026-02808-0" target="_blank" rel="noopener">doi:10.1007/s00248-026-02808-0</a></li>
+      </ol>
+
+      <div class="year-tag">2025</div>
+      <ol class="pubs" style="counter-reset:pub 4">
+        <li class="pub"><span class="authors">Deng, L., <strong>Chen, J.</strong>, Xu, Z., Lee, S. S., Cheung, S., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1038/s43247-025-02850-9" target="_blank" rel="noopener">Global marine metagenomics reveals the functional diversity and ecological adaptations of diazotrophs across marine ecosystems</a>. <em>Communications Earth &amp; Environment</em>, 6(1), 933. <a class="doi" href="https://doi.org/10.1038/s43247-025-02850-9" target="_blank" rel="noopener">doi:10.1038/s43247-025-02850-9</a> <span class="role">co-first author</span><span class="metric">5-Year IF: 10.4 · JCR Q1 · CAS Q1</span></li>
+        <li class="pub"><span class="authors">Xu, Z., Zhang, X., Li, M., Liang, W., Ma, Y., Deng, L., <strong>Chen, J.</strong>, Liu, K., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1093/ismejo/wraf257" target="_blank" rel="noopener">Decadal scale phytoplankton species miniaturization in subtropical coastal waters</a>. <em>The ISME Journal</em>, 19(1), wraf257. <a class="doi" href="https://doi.org/10.1093/ismejo/wraf257" target="_blank" rel="noopener">doi:10.1093/ismejo/wraf257</a></li>
+        <li class="pub"><span class="authors">Li, Q., <strong>Chen, J.</strong>, Xu, Z., Deng, L., Fang, X., Zhang, S., Zhang, X., Xu, H., Lin, S., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1186/s12866-025-04366-w" target="_blank" rel="noopener">Detoxification of domoic acid from pseudo-nitzschia by gut microbiota in <em>Acartia erythraea</em></a>. <em>BMC Microbiology</em>, 25(1), 659. <a class="doi" href="https://doi.org/10.1186/s12866-025-04366-w" target="_blank" rel="noopener">doi:10.1186/s12866-025-04366-w</a> <span class="role">co-corresponding author</span><span class="metric">5-Year IF: 5.6 · JCR Q1 · CAS Q2</span></li>
+        <li class="pub"><span class="authors">Wang, X., <strong>Chen, J.</strong>, Lee, S., Ju, Z., Akhand, A., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1128/aem.00606-25" target="_blank" rel="noopener">Compartment-specific microbial communities highlight the ecological roles of fungi in a subtropical seagrass ecosystem</a>. <em>Applied and Environmental Microbiology</em>. <a class="doi" href="https://doi.org/10.1128/aem.00606-25" target="_blank" rel="noopener">doi:10.1128/aem.00606-25</a></li>
+        <li class="pub"><span class="authors">Deng, L., <strong>Chen, J.</strong>, Zehr, J. P., Liu, J., Zhang, X., Cheung, S., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1002/lol2.10458" target="_blank" rel="noopener">A novel mechanism explaining the temperature dependence of marine unicellular nitrogen-fixing cyanobacteria</a>. <em>Limnology and Oceanography Letters</em>, 10(3), 287–297. <a class="doi" href="https://doi.org/10.1002/lol2.10458" target="_blank" rel="noopener">doi:10.1002/lol2.10458</a></li>
+        <li class="pub"><span class="authors">Zhang, X., <strong>Chen, J.</strong>, Xu, Z., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1016/j.marpolbul.2025.117549" target="_blank" rel="noopener">Metabarcoding reveals high species diversity of chaetoceros, pseudo-nitzschia, and thalassiosira in Hong Kong coastal waters, a typical subtropical region</a>. <em>Marine Pollution Bulletin</em>, 212, 117549. <a class="doi" href="https://doi.org/10.1016/j.marpolbul.2025.117549" target="_blank" rel="noopener">doi:10.1016/j.marpolbul.2025.117549</a></li>
+        <li class="pub"><span class="authors">Ju, Z., Lee, S. S., <strong>Chen, J.</strong>, Deng, L., Zhang, X., Xu, Z., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1093/ismeco/ycaf053" target="_blank" rel="noopener">Deciphering the key stressors shaping the relative success of core mixoplankton across spatiotemporal scales</a>. <em>ISME Communications</em>, 5(1), ycaf053. <a class="doi" href="https://doi.org/10.1093/ismeco/ycaf053" target="_blank" rel="noopener">doi:10.1093/ismeco/ycaf053</a></li>
+        <li class="pub"><span class="authors">Xu, Z., <strong>Chen, J.</strong>, Liang, W., Chen, Z. L., Wu, W., Xia, X., Chen, B., He, D., &amp; Liu, H.</span> (2025). <a class="pub-title" href="https://doi.org/10.1093/ismeco/ycaf002" target="_blank" rel="noopener">Contrasting diversity patterns between microeukaryotic and prokaryotic communities in cold-seep sediments</a>. <em>ISME Communications</em>, 5(1), ycaf002. <a class="doi" href="https://doi.org/10.1093/ismeco/ycaf002" target="_blank" rel="noopener">doi:10.1093/ismeco/ycaf002</a></li>
+      </ol>
+
+      <div class="year-tag">2024</div>
+      <ol class="pubs" style="counter-reset:pub 12">
+        <li class="pub"><span class="authors">Zhong, C., Yamanouchi, S., Li, Y., <strong>Chen, J.</strong>, Wei, T., Wang, R., Zhou, K., Cheng, A., Hao, W., Liu, H., Konhauser, K. O., Iwasaki, W., &amp; Qian, P.-Y.</span> (2024). <a class="pub-title" href="https://doi.org/10.1128/msystems.00317-24" target="_blank" rel="noopener">Marine biofilms: Cyanobacteria factories for the global oceans</a>. <em>mSystems</em>, 9(11), e00317-24. <a class="doi" href="https://doi.org/10.1128/msystems.00317-24" target="_blank" rel="noopener">doi:10.1128/msystems.00317-24</a></li>
+        <li class="pub"><span class="authors">Li, Y., <strong>Chen, J.</strong>, Lin, Y., Zhong, C., Jing, H., &amp; Liu, H.</span> (2024). <a class="pub-title" href="https://doi.org/10.1186/s40168-024-01912-y" target="_blank" rel="noopener">Thaumarchaeota from deep-sea methane seeps provide novel insights into their evolutionary history and ecological implications</a>. <em>Microbiome</em>, 12(1), 197. <a class="doi" href="https://doi.org/10.1186/s40168-024-01912-y" target="_blank" rel="noopener">doi:10.1186/s40168-024-01912-y</a></li>
+        <li class="pub"><span class="authors"><strong>Chen, J.</strong>, Deng, L., Wang, X., Zhong, C., Xia, X., &amp; Liu, H.</span> (2024). <a class="pub-title" href="https://doi.org/10.1128/msystems.00176-24" target="_blank" rel="noopener">Chemosynthetic alphaproteobacterial diazotrophs reside in deep-sea cold-seep bottom waters</a>. <em>mSystems</em>, e00176-24. <a class="doi" href="https://doi.org/10.1128/msystems.00176-24" target="_blank" rel="noopener">doi:10.1128/msystems.00176-24</a> <span class="role">first author</span><span class="metric">5-Year IF: 6.4 · JCR Q1 · CAS Q2</span></li>
+        <li class="pub"><span class="authors">Wang, X., Pecoraro, L., <strong>Chen, J.</strong>, Tang, Y., Lee, S., Chen, S., &amp; Liu, H.</span> (2024). <a class="pub-title" href="https://doi.org/10.3390/jof10070474" target="_blank" rel="noopener"><em>Halophilomyces hongkongensis</em>, a Novel Species and Genus in the Lulworthiaceae with Antibacterial Potential, Colonizing the Roots and Rhizomes of the Seagrass <em>Halophila ovalis</em></a>. <em>Journal of Fungi</em>, 10(7), 474. <a class="doi" href="https://doi.org/10.3390/jof10070474" target="_blank" rel="noopener">doi:10.3390/jof10070474</a></li>
+        <li class="pub"><span class="authors">Zhang, X., Li, Y., Xu, Z., <strong>Chen, J.</strong>, Cheung, S., Jing, H., Xu, J., &amp; Liu, H.</span> (2024). <a class="pub-title" href="https://doi.org/10.1029/2023JC020675" target="_blank" rel="noopener">Chromatic Acclimating <em>Synechococcus</em> Dominate in Mesoscale Eddies</a>. <em>Journal of Geophysical Research: Oceans</em>, 129(7), e2023JC020675. <a class="doi" href="https://doi.org/10.1029/2023JC020675" target="_blank" rel="noopener">doi:10.1029/2023JC020675</a></li>
+        <li class="pub"><span class="authors">Deng, L., Cheung, S., Liu, J., <strong>Chen, J.</strong>, Chen, F., Zhang, X., &amp; Liu, H.</span> (2024). <a class="pub-title" href="https://doi.org/10.1016/j.envpol.2024.123960" target="_blank" rel="noopener">Nanoplastics impair growth and nitrogen fixation of marine nitrogen-fixing cyanobacteria</a>. <em>Environmental Pollution</em>, 350, 123960. <a class="doi" href="https://doi.org/10.1016/j.envpol.2024.123960" target="_blank" rel="noopener">doi:10.1016/j.envpol.2024.123960</a></li>
+        <li class="pub"><span class="authors"><strong>Chen, J.</strong>, Deng, L., Pang, M., Li, Y., Xu, Z., Zhang, X., &amp; Liu, H.</span> (2024). <a class="pub-title" href="https://doi.org/10.1093/ismeco/ycae087" target="_blank" rel="noopener">Transcriptomic insights into the shift of trophic strategies in mixotrophic dinoflagellate lepidodinium in the warming ocean</a>. <em>ISME Communications</em>, 4(1), ycae087. <a class="doi" href="https://doi.org/10.1093/ismeco/ycae087" target="_blank" rel="noopener">doi:10.1093/ismeco/ycae087</a> <span class="role">first author</span><span class="metric">5-Year IF: 7.3 · JCR Q1 · CAS Q1</span></li>
+      </ol>
+
+      <div class="year-tag">2023</div>
+      <ol class="pubs" style="counter-reset:pub 19">
+        <li class="pub"><span class="authors">Xu, Z., <strong>Chen, J.</strong>, Li, Y., Shekarriz, E., Wu, W., Chen, B., &amp; Liu, H.</span> (2023). <a class="pub-title" href="https://doi.org/10.1007/s00248-023-02212-y" target="_blank" rel="noopener">High Microeukaryotic Diversity in the Cold-Seep Sediment</a>. <em>Microbial Ecology</em>, 86(3), 2003–2020. <a class="doi" href="https://doi.org/10.1007/s00248-023-02212-y" target="_blank" rel="noopener">doi:10.1007/s00248-023-02212-y</a></li>
+        <li class="pub"><span class="authors"><strong>Chen, J.</strong>, Li, Y., Zhong, C., Xu, Z., Lu, G., Jing, H., &amp; Liu, H.</span> (2023). <a class="pub-title" href="https://doi.org/10.1128/msystems.01179-22" target="_blank" rel="noopener">Genomic Insights into Niche Partitioning across Sediment Depth among Anaerobic Methane-Oxidizing Archaea in Global Methane Seeps</a>. <em>mSystems</em>, 8(2), e01179-22. <a class="doi" href="https://doi.org/10.1128/msystems.01179-22" target="_blank" rel="noopener">doi:10.1128/msystems.01179-22</a> <span class="role">first author</span><span class="metric">5-Year IF: 6.4 · JCR Q1 · CAS Q2</span></li>
+        <li class="pub"><span class="authors">Shekarriz, E., <strong>Chen, J.</strong>, Xu, Z., &amp; Liu, H.</span> (2023). <a class="pub-title" href="https://doi.org/10.1128/spectrum.01978-22" target="_blank" rel="noopener">Disentangling the Functional Role of Fungi in Cold Seep Sediment</a>. <em>Microbiology Spectrum</em>, 11(2), e01978-22. <a class="doi" href="https://doi.org/10.1128/spectrum.01978-22" target="_blank" rel="noopener">doi:10.1128/spectrum.01978-22</a></li>
+        <li class="pub"><span class="authors">Xiao, Y., Wang, H., Lan, Y., Zhong, C., Yan, G., Xu, Z., Lu, G., <strong>Chen, J.</strong>, Wei, T., Wong, W. C., Kwan, Y. H., &amp; Qian, P.-Y.</span> (2023). <a class="pub-title" href="https://doi.org/10.1186/s42523-023-00238-8" target="_blank" rel="noopener">Changes in community structures and functions of the gut microbiomes of deep-sea cold seep mussels during in situ transplantation experiment</a>. <em>Animal Microbiome</em>, 5(1), 17. <a class="doi" href="https://doi.org/10.1186/s42523-023-00238-8" target="_blank" rel="noopener">doi:10.1186/s42523-023-00238-8</a></li>
+      </ol>
+
+      <div class="year-tag">2022</div>
+      <ol class="pubs" style="counter-reset:pub 23">
+        <li class="pub"><span class="authors">Wang, T., Xia, X., <strong>Chen, J.</strong>, Liu, H., &amp; Jing, H.</span> (2022). <a class="pub-title" href="https://doi.org/10.3389/fmicb.2022.837037" target="_blank" rel="noopener">Spatio-Temporal Variation of <em>Synechococcus</em> Assemblages at DNA and cDNA Levels in the Tropical Estuarine and Coastal Waters</a>. <em>Frontiers in Microbiology</em>, 13, 837037. <a class="doi" href="https://doi.org/10.3389/fmicb.2022.837037" target="_blank" rel="noopener">doi:10.3389/fmicb.2022.837037</a></li>
+        <li class="pub"><span class="authors"><strong>Chen, J.</strong>, Li, Y., Jing, H., Zhang, X., Xu, Z., Xu, J., &amp; Liu, H.</span> (2022). <a class="pub-title" href="https://doi.org/10.1111/nph.17903" target="_blank" rel="noopener">Genomic and transcriptomic evidence for the diverse adaptations of <em>Synechococcus</em> subclusters 5.2 and 5.3 to mesoscale eddies</a>. <em>New Phytologist</em>, 233(4), 1828–1842. <a class="doi" href="https://doi.org/10.1111/nph.17903" target="_blank" rel="noopener">doi:10.1111/nph.17903</a> <span class="role">co-first author</span><span class="metric">5-Year IF: 10.1 · JCR Q1 · CAS Q1</span></li>
+      </ol>
+
+      <div class="year-tag">Before 2021</div>
+      <ol class="pubs" style="counter-reset:pub 25">
+        <li class="pub"><span class="authors">Liang, L., <strong>Chen, J.</strong>, Li, Y., &amp; Zhang, H.</span> (2020). <a class="pub-title" href="https://doi.org/10.1186/s12864-020-6480-9" target="_blank" rel="noopener">Insights into high-pressure acclimation: Comparative transcriptome analysis of sea cucumber <em>Apostichopus japonicus</em> at different hydrostatic pressure exposures</a>. <em>BMC Genomics</em>, 21(1), 68. <a class="doi" href="https://doi.org/10.1186/s12864-020-6480-9" target="_blank" rel="noopener">doi:10.1186/s12864-020-6480-9</a> <span class="role">co-first author</span><span class="metric">5-Year IF: 4.4 · JCR Q2 · CAS Q2</span></li>
+        <li class="pub"><span class="authors">Li, Y., Yan, L., Kong, X., <strong>Chen, J.</strong>, &amp; Zhang, H.</span> (2020). <a class="pub-title" href="https://doi.org/10.1016/j.ijbiomac.2020.09.135" target="_blank" rel="noopener">Cloning, expression, and characterization of a novel superoxide dismutase from deep-sea sea cucumber</a>. <em>International Journal of Biological Macromolecules</em>, 163, 1875–1883. <a class="doi" href="https://doi.org/10.1016/j.ijbiomac.2020.09.135" target="_blank" rel="noopener">doi:10.1016/j.ijbiomac.2020.09.135</a></li>
+        <li class="pub"><span class="authors"><strong>Chen, J.</strong>, Liang, L., Li, Y., &amp; Zhang, H.</span> (2020). <a class="pub-title" href="https://doi.org/10.3389/fgene.2020.00355" target="_blank" rel="noopener">Molecular Response to High Hydrostatic Pressure: Time-Series Transcriptomic Analysis of Shallow-Water Sea Cucumber <em>Apostichopus japonicus</em></a>. <em>Frontiers in Genetics</em>, 11, 355. <a class="doi" href="https://doi.org/10.3389/fgene.2020.00355" target="_blank" rel="noopener">doi:10.3389/fgene.2020.00355</a> <span class="role">first author</span><span class="metric">5-Year IF: 3.3 · JCR Q2 · CAS Q3</span></li>
+        <li class="pub"><span class="authors">Liu, J., Cui, D., Wang, H., <strong>Chen, J.</strong>, Liu, H., &amp; Zhang, H.</span> (2020). <a class="pub-title" href="https://doi.org/10.1093/mollus/eyz033" target="_blank" rel="noopener">Extensive cryptic diversity of giant clams (Cardiidae: Tridacninae) revealed by DNA-sequence-based species delimitation approaches with new data from Hainan Island, South China Sea</a>. <em>Journal of Molluscan Studies</em>, 86(1), 56–63. <a class="doi" href="https://doi.org/10.1093/mollus/eyz033" target="_blank" rel="noopener">doi:10.1093/mollus/eyz033</a></li>
+        <li class="pub"><span class="authors"><strong>Chen, J.</strong>, Liu, H., Cai, S., &amp; Zhang, H.</span> (2019). <a class="pub-title" href="https://doi.org/10.1038/s41598-019-39716-y" target="_blank" rel="noopener">Comparative transcriptome analysis of <em>Eogammarus possjeticus</em> at different hydrostatic pressure and temperature exposures</a>. <em>Scientific Reports</em>, 9(1), 3456. <a class="doi" href="https://doi.org/10.1038/s41598-019-39716-y" target="_blank" rel="noopener">doi:10.1038/s41598-019-39716-y</a> <span class="role">first author</span><span class="metric">5-Year IF: 4.8 · JCR Q1 · CAS Q3</span></li>
+        <li class="pub"><span class="authors">Cai, S., Mu, W., Wang, H., <strong>Chen, J.</strong>, &amp; Zhang, H.</span> (2019). <a class="pub-title" href="https://doi.org/10.1080/23802359.2019.1579071" target="_blank" rel="noopener">Sequence and phylogenetic analysis of the mitochondrial genome of giant clam, <em>Tridacna crocea</em> (Tridacninae: Tridacna)</a>. <em>Mitochondrial DNA Part B</em>, 4(1), 1032–1033. <a class="doi" href="https://doi.org/10.1080/23802359.2019.1579071" target="_blank" rel="noopener">doi:10.1080/23802359.2019.1579071</a></li>
+        <li class="pub"><span class="authors">Li, Y., Kong, X., <strong>Chen, J.</strong>, Liu, H., &amp; Zhang, H.</span> (2018). <a class="pub-title" href="https://doi.org/10.3390/md16050169" target="_blank" rel="noopener">Characteristics of the Copper,Zinc Superoxide Dismutase of a Hadal Sea Cucumber (<em>Paelopatides</em> sp.) from the Mariana Trench</a>. <em>Marine Drugs</em>, 16(5), 169. <a class="doi" href="https://doi.org/10.3390/md16050169" target="_blank" rel="noopener">doi:10.3390/md16050169</a></li>
+        <li class="pub"><span class="authors">Liu, H., Kong, X., <strong>Chen, J.</strong>, &amp; Zhang, H.</span> (2018). <a class="pub-title" href="https://doi.org/10.1016/j.aquaculture.2018.01.012" target="_blank" rel="noopener">De novo sequencing and transcriptome analysis of <em>Stichopus horrens</em> to reveal genes related to biosynthesis of triterpenoids</a>. <em>Aquaculture</em>, 491, 358–367. <a class="doi" href="https://doi.org/10.1016/j.aquaculture.2018.01.012" target="_blank" rel="noopener">doi:10.1016/j.aquaculture.2018.01.012</a></li>
+      </ol>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© 2026 Jiawei CHEN (Jason) · Department of Ocean Science, HKUST</span>
+    <span>Last updated: November 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
