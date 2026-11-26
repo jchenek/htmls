@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1st STG Annual Meeting (2026) — Mobile</title>
+<style>
+  :root{
+    --paper:#EFEDE6;
+    --card:#FFFFFF;
+    --ink:#17241F;
+    --ink-2:#3D4A44;
+    --muted:#77837C;
+    --line:#E3E1D8;
+    --line-2:#EDEBE3;
+    --lead:#B9711F;      --lead-bg:#FCF2E4;  --lead-dot:#D08A34;
+    --talk:#33688F;      --talk-bg:#EFF5FA;  --talk-dot:#5C8FB5;
+    --disc:#4F8250;      --disc-bg:#EEF5EA;  --disc-dot:#74A06E;
+    --logi:#8B8A80;      --logi-bg:#F6F5EF;  --logi-dot:#C2C0B4;
+    --accent:#0F5F55;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Segoe UI","Helvetica Neue",Inter,-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    font-size:14px;
+    line-height:1.4;
+    padding:0;
+    display:flex;justify-content:center;
+  }
+  .page{
+    width:100%;max-width:100%;
+    background:var(--card);
+    padding:18px 14px 22px;
+    position:relative;
+  }
+  .page::before{
+    content:"";position:absolute;left:14px;right:14px;top:0;height:3px;
+    background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 34%,var(--lead) 34%,var(--lead) 62%,var(--talk) 62%,var(--talk) 84%,var(--disc) 84%,var(--disc) 100%);
+    border-radius:0 0 2px 2px;
+  }
+
+  /* ---------- header ---------- */
+  header{display:flex;flex-direction:column;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:8px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--accent);display:block}
+  h1{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:28px;line-height:1.12;font-weight:400;letter-spacing:-.01em;
+    font-variant-numeric:lining-nums tabular-nums;
+    font-feature-settings:"lnum" 1,"tnum" 1;
+    color:var(--ink);
+  }
+  h1 strong{font-weight:600}
+  .subline{margin-top:8px;font-size:13px;color:var(--muted);letter-spacing:.01em;line-height:1.5}
+  .subline b{color:var(--ink-2);font-weight:600}
+
+  .stamp{
+    display:flex;align-items:baseline;gap:14px;
+    border-top:1px solid var(--line);padding-top:10px;
+  }
+  .stamp .big{
+    font-family:Georgia,serif;font-size:26px;line-height:1;letter-spacing:-.02em;color:var(--ink);
+  }
+  .stamp .big span{font-size:12px;letter-spacing:.05em;color:var(--muted);margin-left:2px;font-family:inherit}
+  .stamp .cap{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .stamp .days{font-size:12px;color:var(--ink-2);letter-spacing:.03em}
+
+  .online{font-weight:700;letter-spacing:.02em}
+
+  /* ---------- venue strip ---------- */
+  .venue{
+    display:flex;align-items:flex-start;gap:7px;margin-top:10px;
+    font-size:11.5px;color:var(--muted);letter-spacing:.01em;line-height:1.45;
+  }
+  .venue svg{flex:0 0 auto;color:var(--accent);opacity:.75;margin-top:1px}
+  .venue b{color:var(--ink-2);font-weight:600;font-size:12px;white-space:nowrap}
+
+  /* ---------- ribbon ---------- */
+  .ribbon-wrap{margin-top:14px}
+  .sec-label{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    margin-bottom:7px;font-weight:600;
+  }
+  .sec-label em{font-style:normal;letter-spacing:.02em;text-transform:none;font-size:12px;color:var(--muted)}
+  .ribbon{display:flex;height:20px;border-radius:3px;overflow:hidden;gap:2px;background:var(--line-2)}
+  .ribbon i{display:block;height:100%;position:relative}
+  .s-lead{background:var(--lead-dot)}
+  .s-talk{background:var(--talk-dot)}
+  .s-disc{background:var(--disc-dot)}
+  .s-logi{background:#DCDAD0}
+  .ticks{position:relative;height:16px;margin-top:4px;border-top:0}
+  .tick{position:absolute;top:0;font-size:9.5px;color:var(--muted);letter-spacing:.03em;transform:translateX(-50%)}
+  .tick::before{content:"";display:block;width:1px;height:3px;background:var(--line);margin:0 auto 3px}
+  .tick.first::before,.tick.last::before{background:var(--muted)}
+
+  /* ribbon colour legend */
+  .bar-legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:4px}
+  .bar-legend span{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-2);letter-spacing:.02em}
+  .bar-legend i{width:10px;height:10px;border-radius:2px;display:block;flex:0 0 auto}
+
+  /* ---------- allocation chips ---------- */
+  .alloc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+  .chip{border:1px solid var(--line-2);border-radius:6px;padding:8px 10px;background:#FCFBF7}
+  .chip .v{font-size:17px;font-weight:600;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.15}
+  .chip .k{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .chip.c-lead .v{color:var(--lead)}
+  .chip.c-talk .v{color:var(--talk)}
+  .chip.c-disc .v{color:var(--disc)}
+  .chip.c-logi .v{color:var(--logi)}
+
+  /* ---------- agenda (single column on mobile) ---------- */
+  .agenda{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}
+  .panel{min-width:0}
+  .panel-head{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding-bottom:8px;border-bottom:2px solid var(--ink);margin-bottom:4px;
+  }
+  .panel-head .name{font-family:Georgia,serif;font-size:19px;letter-spacing:-.01em}
+  .panel-head .name small{
+    font-family:inherit;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);display:block;margin-bottom:2px;
+  }
+  .panel-head .range{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+  .rows{position:relative;padding:5px 0 2px}
+  .rows::before{
+    content:"";position:absolute;left:97px;top:12px;bottom:14px;width:2px;
+    background:linear-gradient(180deg,var(--line) 0%,var(--line) 92%,transparent 100%);
+  }
+  .row{
+    display:grid;grid-template-columns:82px 14px minmax(0,1fr) 42px;
+    column-gap:8px;align-items:center;
+    padding:3px 0;position:relative;
+  }
+  .time{
+    font-size:10.5px;color:var(--muted);font-variant-numeric:tabular-nums;
+    text-align:right;letter-spacing:.01em;white-space:nowrap;
+  }
+  .time b{color:var(--ink-2);font-weight:600}
+  .rail{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--logi-dot);box-shadow:0 0 0 3px #fff;position:relative;z-index:2}
+  .body{border-radius:7px;padding:6px 10px;border:1px solid transparent;min-width:0}
+  .who{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .sub{font-size:12px;color:var(--muted);letter-spacing:.03em;margin-top:2px;line-height:1.35}
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
+  .meta .sub{margin-top:0}
+  .meta .aff{margin-top:0;white-space:nowrap}
+  .sub-note{font-style:italic;letter-spacing:.02em;margin-top:1px;opacity:.9;font-size:11px}
+  .aff{font-size:11px;color:#98A29C;letter-spacing:.04em;margin-top:2px;line-height:1.3}
+  .row.lead .sub{color:#96703A}
+  .row.talk .sub{color:#6C8699}
+  .name-t{font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.005em;line-height:1.3}
+  .tag{font-size:10px;letter-spacing:.05em;font-weight:700;padding:2px 5px;border-radius:3px;white-space:nowrap}
+  .dur{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;letter-spacing:.01em;white-space:nowrap}
+
+  /* rows by type */
+  .row.lead .dot{background:var(--lead-dot)}
+  .row.lead .body{background:var(--lead-bg);border-color:#F3E2CB}
+  .row.lead .tag{background:#F5DFC2;color:#8A5312}
+  .row.lead .name-t{color:#5A3708}
+
+  .row.talk .dot{background:var(--talk-dot)}
+  .row.talk .body{background:var(--talk-bg);border-color:#E0EBF3}
+  .row.talk .tag{background:#DCE9F3;color:#2A5C80}
+
+  .row.disc .dot{background:var(--disc-dot)}
+  .row.disc .body{background:var(--disc-bg);border-color:#DEEDD7}
+  .row.disc .tag{background:#D9EAD2;color:#3F6B40}
+  .row.disc .sub{color:#5E7A52}
+
+  .row.logi .body{background:transparent;border:1px dashed var(--line);padding:5px 10px}
+  .row.logi .name-t{font-weight:500;color:var(--muted);font-size:13px;font-style:italic;letter-spacing:.02em}
+  .row.logi .dur{color:#A5A399}
+
+  /* section header inside column */
+  .sec{
+    display:flex;align-items:baseline;justify-content:space-between;
+    padding:11px 6px 6px 112px;
+    margin-top:3px;
+    border-bottom:1px solid var(--line-2);
+    position:relative;z-index:3;
+  }
+  .sec .k{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+  .sec .t{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+  /* ---------- presentation format ---------- */
+  .fmt{
+    margin-top:18px;padding-top:13px;border-top:1px solid var(--line);
+    display:flex;flex-direction:column;align-items:stretch;gap:8px;
+  }
+  .fmt-l{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .fmt-i{
+    display:flex;align-items:center;gap:8px;
+    border:1px solid var(--line-2);border-radius:6px;background:#FCFBF7;
+    padding:7px 11px;font-size:12px;color:var(--ink-2);letter-spacing:.01em;
+  }
+  .fmt-i i{width:7px;height:7px;border-radius:50%;display:block;flex:0 0 auto}
+  .fmt-i b{font-weight:600;color:var(--ink);font-size:12.5px}
+  .fmt-i u{text-decoration:none;color:var(--muted);font-variant-numeric:tabular-nums;font-size:11px;margin-left:auto;padding-left:10px;white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <div class="eyebrow">One-day rundown &nbsp;·&nbsp; 29 November</div>
+      <h1>1st STG <strong>Annual Meeting</strong> (2026)</h1>
+      <div class="subline"><b>09:00 – 20:00</b> &nbsp;·&nbsp; 17 talks &nbsp;·&nbsp; 4 task blocks &nbsp;·&nbsp; 2 group discussions</div>
+    </div>
+    <div class="stamp">
+      <div class="big">11<span>/29</span></div>
+      <div class="cap">Programme at a glance</div>
+      <div class="days">Task 1 &amp; 4 · Task 2 &amp; 3</div>
+    </div>
+  </header>
+
+  <div class="venue">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-6.4 7-11.5a7 7 0 1 0-14 0c0 5.1 7 11.5 7 11.5z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    <b>Wilmton Art Hotel</b>
+    <span>(Building C, China Railway Ringwood City, No. 89 Phoenix Avenue, Nansha District, Nansha, 511455 Guangzhou, China)</span>
+  </div>
+
+
+  <!-- proportional day ribbon -->
+  <section class="ribbon-wrap">
+    <div class="sec-label"><span>Day rhythm — bars drawn to scale</span><em>11-hour continuous programme</em></div>
+    <div class="ribbon">
+      <i class="s-lead" style="flex:5"        title="09:00–09:05  Prof. Pei-Yuan Qian (PC)"></i>
+      <i class="s-talk" style="flex:15"       title="09:05–09:20  Dr. Jiawei Chen — Project Overview"></i>
+      <i class="s-lead" style="flex:20"       title="09:20–09:40  Prof. Faming Wang"></i>
+      <i class="s-lead" style="flex:20"       title="09:40–10:00  Prof. Derrick YF Lai (online)"></i>
+      <i class="s-talk" style="flex:15"       title="10:00–10:15  Prof. Junde Dong"></i>
+      <i class="s-talk" style="flex:15"       title="10:15–10:30  Prof. Juan Ling"></i>
+      <i class="s-talk" style="flex:15"       title="10:30–10:45  Dr. Weiguo Zhou"></i>
+      <i class="s-logi" style="flex:20"       title="10:45–11:05  Break & Group Photo"></i>
+      <i class="s-talk" style="flex:15"       title="11:05–11:20  Prof. JD Gaitan Espitia (online)"></i>
+      <i class="s-talk" style="flex:15"       title="11:20–11:35  Prof. Jinping Cheng"></i>
+      <i class="s-talk" style="flex:15"       title="11:35–11:50  Prof. Hongmei Jing"></i>
+      <i class="s-disc" style="flex:40"       title="11:50–12:30  Discussion (Task 1 & 4)"></i>
+      <i class="s-logi" style="flex:60"       title="12:30–13:30  Lunch Break"></i>
+      <i class="s-lead" style="flex:20"       title="13:30–13:50  Prof. Jiying Li"></i>
+      <i class="s-lead" style="flex:20"       title="13:50–14:10  Prof. Ding He"></i>
+      <i class="s-talk" style="flex:15"       title="14:10–14:25  Dr. Shilin An & Dr. Jiawei Chen (for Prof. Pei-Yuan Qian)"></i>
+      <i class="s-talk" style="flex:15"       title="14:25–14:40  Prof. Masayuki Ushio"></i>
+      <i class="s-talk" style="flex:15"       title="14:40–14:55  Prof. Charmaine Yung"></i>
+      <i class="s-talk" style="flex:15"       title="14:55–15:10  Prof. Xianghui Guo"></i>
+      <i class="s-logi" style="flex:20"       title="15:10–15:30  Break"></i>
+      <i class="s-talk" style="flex:15"       title="15:30–15:45  Prof. Zhe Lu"></i>
+      <i class="s-talk" style="flex:15"       title="15:45–16:00  Prof. Shuchai Gan"></i>
+      <i class="s-disc" style="flex:40"       title="16:00–16:40  Discussion (Task 2 & 3)"></i>
+      <i class="s-lead" style="flex:5"        title="16:40–16:45  Prof. Pei-Yuan Qian (PC)"></i>
+      <i class="s-disc" style="flex:105"      title="16:45–18:30  Management Committee Meeting (PC &amp; Co-PI)"></i>
+      <i class="s-logi" style="flex:90"       title="18:30–20:00  Dinner"></i>
+    </div>
+        <div class="ticks">
+      <span class="tick first" style="left:0%">09:00</span>
+      <span class="tick" style="left:18.18%">11:00</span>
+      <span class="tick" style="left:36.36%">13:00</span>
+      <span class="tick" style="left:54.55%">15:00</span>
+      <span class="tick" style="left:72.73%">17:00</span>
+      <span class="tick" style="left:90.91%">19:00</span>
+      <span class="tick last" style="left:100%;transform:translateX(-100%)">20:00</span>
+    </div>
+
+    <div class="bar-legend">
+      <span><i style="background:var(--lead-dot)"></i>PC / Co-PI report</span>
+      <span><i style="background:var(--talk-dot)"></i>Co-I report</span>
+      <span><i style="background:var(--disc-dot)"></i>Discussion</span>
+      <span><i style="background:#DCDAD0"></i>Break · meal · photo</span>
+    </div>
+
+    <div class="alloc">
+      <div class="chip c-lead"><div class="v">10<span style="font-size:13px;font-weight:400">min</span></div><div class="k">Opening and closing</div></div>
+      <div class="chip c-talk"><div class="v">145<span style="font-size:13px;font-weight:400">min</span></div><div class="k">Morning talks</div></div>
+      <div class="chip c-talk"><div class="v">130<span style="font-size:13px;font-weight:400">min</span></div><div class="k">Afternoon talks</div></div>
+      <div class="chip c-disc"><div class="v">80<span style="font-size:13px;font-weight:400">min</span></div><div class="k">Discussion</div></div>
+    </div>
+  </section>
+
+  <!-- agenda -->
+  <div class="agenda">
+
+    <!-- MORNING -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="name"><small>Session 01</small>Morning</div>
+        <div class="range">09:00 — 13:30</div>
+      </div>
+      <div class="rows">
+        <div class="row lead">
+          <div class="time"><b>09:00</b> – 09:05</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Pei-Yuan Qian</span><span class="tag">PC</span></div><div class="meta"><div class="sub">Opening remarks</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">5 min</div>
+        </div>
+
+        <div class="row talk">
+          <div class="time"><b>09:05</b> – 09:20</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Dr. Jiawei Chen</span></div><div class="meta"><div class="sub">Project Overview</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+
+        <div class="sec"><span class="k">Task 1 &amp; 4</span><span class="t">09:20 — 12:30</span></div>
+
+        <div class="row lead">
+          <div class="time"><b>09:20</b> – 09:40</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Faming Wang</span><span class="tag">Co-PI (Task 1)</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">SCBG</div></div></div>
+          <div class="dur">20 min</div>
+        </div>
+        <div class="row lead">
+          <div class="time"><b>09:40</b> – 10:00</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Derrick YF Lai</span><span class="tag">Co-PI (Task 4)</span></div><div class="meta"><div class="sub">Progress report <span class="online">(online)</span></div><div class="aff">CUHK</div></div></div>
+          <div class="dur">20 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>10:00</b> – 10:15</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Junde Dong</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">SCSIO</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>10:15</b> – 10:30</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Juan Ling</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">SCSIO</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>10:30</b> – 10:45</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Dr. Weiguo Zhou</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">SCSIO</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row logi">
+          <div class="time"><b>10:45</b> – 11:05</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><span class="name-t">Break &amp; Group Photo</span></div>
+          <div class="dur">20 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>11:05</b> – 11:20</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. JD Gaitan Espitia</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report <span class="online">(online)</span></div><div class="aff">HKU</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>11:20</b> – 11:35</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Jinping Cheng</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">EdUHK</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>11:35</b> – 11:50</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Hongmei Jing</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">IDSSE</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row disc">
+          <div class="time"><b>11:50</b> – 12:30</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Group Discussion</span><span class="tag">Task 1 &amp; 4</span></div><div class="sub">Chaired by Prof. Faming Wang &amp; Prof. Derrick YF Lai</div></div>
+          <div class="dur">40 min</div>
+        </div>
+        <div class="row logi">
+          <div class="time"><b>12:30</b> – 13:30</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><span class="name-t">Lunch Break</span></div>
+          <div class="dur">60 min</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AFTERNOON -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="name"><small>Session 02</small>Afternoon</div>
+        <div class="range">13:30 — 20:00</div>
+      </div>
+      <div class="rows">
+        <div class="sec" style="margin-top:0;padding-top:2px;border-bottom:1px solid var(--line-2)">
+          <span class="k">Task 2 &amp; 3</span><span class="t">13:30 — 16:40</span>
+        </div>
+        <div class="row lead">
+          <div class="time"><b>13:30</b> – 13:50</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Jiying Li</span><span class="tag">Co-PI (Task 2)</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">20 min</div>
+        </div>
+        <div class="row lead">
+          <div class="time"><b>13:50</b> – 14:10</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Ding He</span><span class="tag">Co-PI (Task 3)</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">20 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>14:10</b> – 14:25</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Dr. Shilin An &amp; Dr. Jiawei Chen</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">HKUST</div></div><div class="sub sub-note">on behalf of Prof. Pei-Yuan Qian</div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>14:25</b> – 14:40</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Masayuki Ushio</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>14:40</b> – 14:55</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Charmaine Yung</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>14:55</b> – 15:10</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Xianghui Guo</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">XMU</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row logi">
+          <div class="time"><b>15:10</b> – 15:30</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><span class="name-t">Break</span></div>
+          <div class="dur">20 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>15:30</b> – 15:45</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Zhe Lu</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">SCBG</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+        <div class="row talk">
+          <div class="time"><b>15:45</b> – 16:00</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Shuchai Gan</span><span class="tag">Co-I</span></div><div class="meta"><div class="sub">Progress report</div><div class="aff">SCBG</div></div></div>
+          <div class="dur">15 min</div>
+        </div>
+
+        <div class="row disc">
+          <div class="time"><b>16:00</b> – 16:40</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Group Discussion</span><span class="tag">Task 2 &amp; 3</span></div><div class="sub">Chaired by Prof. Jiying Li &amp; Prof. Ding He</div></div>
+          <div class="dur">40 min</div>
+        </div>
+        <div class="row lead">
+          <div class="time"><b>16:40</b> – 16:45</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Prof. Pei-Yuan Qian</span><span class="tag">PC</span></div><div class="meta"><div class="sub">Closing remarks</div><div class="aff">HKUST</div></div></div>
+          <div class="dur">5 min</div>
+        </div>
+        <div class="row disc">
+          <div class="time"><b>16:45</b> – 18:30</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><div class="who"><span class="name-t">Management Committee Meeting</span><span class="tag">PC &amp; Co-PI</span></div></div>
+          <div class="dur">105 min</div>
+        </div>
+        <div class="row logi">
+          <div class="time"><b>18:30</b> – 20:00</div>
+          <div class="rail"><span class="dot"></span></div>
+          <div class="body"><span class="name-t">Dinner</span></div>
+          <div class="dur">90 min</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="fmt">
+    <div class="fmt-l">Presentation format</div>
+    <div class="fmt-i"><i style="background:var(--lead-dot)"></i><b>Co-PI</b> — 15-min report + 5-min Q&amp;A <u>20-min slot</u></div>
+    <div class="fmt-i"><i style="background:var(--talk-dot)"></i><b>Co-I</b> — 10-min report + 5-min Q&amp;A <u>15-min slot</u></div>
+  </section>
+</div>
+</body>
+</html>
